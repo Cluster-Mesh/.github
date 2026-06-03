@@ -10,7 +10,7 @@ Ci occupiamo di esplorare, documentare e costruire attorno alle tecnologie cloud
 
 | Documento | Descrizione |
 |-----------|-------------|
-| [Microsoft Fabric @ Build 2026 — Deep Dive](docs/fabric_build_2026_deepdive.md) | Approfondimento tecnico in italiano su ogni annuncio Fabric presentato a Microsoft Build 2026: Microsoft IQ, Rayfin, Fabric IQ GA, Operations Agents e altro. |
+| [Microsoft Fabric @ Build 2026 — Deep Dive](../docs/fabric_build_2026_deepdive.md) | Approfondimento tecnico in italiano su ogni annuncio Fabric presentato a Microsoft Build 2026: Microsoft IQ, Rayfin, Fabric IQ GA, Operations Agents e altro. |
 
 ---
 
