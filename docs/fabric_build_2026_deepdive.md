@@ -6,6 +6,11 @@
 - Hero blog Arun Ulag — https://azure.microsoft.com/en-us/blog/microsoft-build-2026-building-agentic-apps-with-microsoft-fabric-and-microsoft-databases/
 - Bogdan Crivat (Analytics Stack) — https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Building-the-agentic-analytics-stack-Fabric-Analytics-at-Build/ba-p/5191634
 - Fabric IQ semantic layer — https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Fabric-IQ-The-semantic-layer-powering-trusted-AI-agents-at/ba-p/5190739
+- Power BI @ Build 2026 (Mohammad Ali) — https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-at-Microsoft-Build-2026-The-Agentic-Era-of-analytics/ba-p/5191671
+- Building in the Agentic Era with Power BI and Fabric (Sujata Narayana) — https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Building-in-the-Agentic-Era-with-Power-BI-and-Fabric/ba-p/5190754
+- DAX User-Defined Functions (Generally Available) — https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/DAX-User-Defined-Functions-Generally-Available/ba-p/5185738
+- Copilot in web modeling (Preview) — https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Copilot-in-web-modeling-Preview/ba-p/5182287
+- The Era of the Agentic Database Developer: Microsoft SQL @ Build 2026 — https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/The-Era-of-the-Agentic-Database-Developer-Microsoft-SQL/ba-p/5190062
 - Web IQ — https://blogs.bing.com/search/June-2026/Announcing-Microsoft-Web-IQ
 - Rayfin — https://github.com/microsoft/rayfin
 
@@ -26,6 +31,7 @@
    - 4.6 [Fabric IQ in Foundry & Agent 365](#46)
    - 4.7 [Fabric IQ in M365 Copilot (Cowork / Chat)](#47)
    - 4.8 [Fabric IQ in GitHub Copilot CLI](#48)
+   - 4.9 [Novità Ontology/MCP emerse ieri](#49)
 5. [Operations Agents GA](#5)
 6. [OneLake — shortcuts, Private Link, catalog in Foundry](#6)
 7. [Fabric Data Warehouse — GPU acceleration (CoddSpeed)](#7)
@@ -42,6 +48,9 @@
    - 9.2 [Copilot modifica semantic model](#92)
    - 9.3 [Fabric apps su semantic model](#93)
    - 9.4 [Agent Skills for Fabric OSS](#94)
+   - 9.5 [Org Apps in Fabric — GA in arrivo + Audiences](#95)
+   - 9.6 [DAX User-Defined Functions — GA](#96)
+   - 9.7 [Copilot in Web Modeling (Preview)](#97)
 10. [Fabric Data Agents — wave di enhancement](#10)
 11. [Real-Time Intelligence & Business Events](#11)
 12. [Microsoft Databases](#12)
@@ -49,6 +58,7 @@
     - 12.2 [Azure Database for PostgreSQL — Defender + migration tooling](#122)
     - 12.3 [Azure Cosmos DB — Linux Emulator GA, semantic rerank, agent memory toolkit](#123)
     - 12.4 [Database Hub in Fabric](#124)
+   - 12.5 [Microsoft SQL: macro-area "Agentic Database Developer"](#125)
 13. [Sicurezza, governance, capacity](#13)
 14. [Fabric Data Factory](#14)
 
@@ -280,6 +290,21 @@ GA prevista nei prossimi mesi.
 - Workflow product/eng decisions ancorate a dati reali, senza switch di tool
 
 Sessione Build: **OD812** — *Bringing Enterprise Ontology Directly into the Developer Workflow* — https://aka.ms/OD812
+
+<a id="49"></a>
+### 4.9 Novità Ontology/MCP emerse ieri
+
+Dal post dedicato su Fabric IQ (pubblicato ieri), ci sono alcune precisazioni importanti da aggiungere:
+
+| Area | Novità | Stato |
+|---|---|---|
+| **Ontology MCP** | Connessione di agenti esterni via MCP a entità/relazioni/mappature governate | Preview |
+| **Foundry IQ integration** | Ontology utilizzabile come knowledge source negli agenti Foundry | Preview |
+| **Modeling velocity** | Supporto a untyped properties, metadata enrichment, omonimie relazione/proprietà | Release wave |
+| **Governance** | Item-level access control per collaborazione multi-team | Release wave |
+| **Authoring UX** | Miglioramenti canvas/affidabilità query + self-guided walkthrough | Release wave |
+
+**Perché conta**: riduce il tempo di modellazione ontologica e rende più semplice portare il contesto Fabric IQ dentro agenti esterni in modo governato.
 
 ---
 
@@ -514,6 +539,49 @@ Repo: https://github.com/microsoft/skills-for-fabric
 
 Sessione Build: **OD817** — *Agentic analytics with Power BI and Microsoft Fabric*
 
+<a id="95"></a>
+### 9.5 Org Apps in Fabric — GA in arrivo + Audiences
+
+**Novità emersa ieri (post Build 2026)**: il team Power BI conferma la disponibilità **GA "nelle prossime settimane"** della nuova esperienza **Org Apps** in Fabric.
+
+**Cosa abilita**:
+- Più org app per workspace
+- Esperienze curate e brandizzate per audience diverse
+- Distribuzione unificata di contenuti Power BI e Fabric item (report, notebook, dashboard real-time, ecc.)
+- **Audience control**: visibilità differenziata degli item per gruppi utenti
+
+**Perché conta**:
+completa il passaggio da "costruire analytics agentici" a "distribuirli in modo enterprise-ready" su larga scala.
+
+<a id="96"></a>
+### 9.6 DAX User-Defined Functions — GA
+
+I **DAX UDF** sono ora **Generally Available** (non più preview), e diventano componenti di base del semantic layer agent-ready.
+
+**Capability chiave in GA**:
+- UDF come oggetti di modello riusabili e discoverable
+- **Optional parameters** nelle signature
+- Supporto type hints estesi (runtime type safety)
+- Authoring/editing anche in web modeling e in Model View
+- Tracciamento dipendenze su rename di table/column/measure
+- `INFO.USERDEFINEDFUNCTIONS()` per catalogare le funzioni nel modello
+
+**Perché conta per gli agenti**:
+gli LLM possono invocare logica business tipizzata e governata (anziché rigenerare DAX ad hoc), migliorando consistenza e affidabilità delle risposte grounded su semantic model.
+
+<a id="97"></a>
+### 9.7 Copilot in Web Modeling (Preview)
+
+**Novità post-Day1 rilevante**: in Power BI service arriva **Copilot in web modeling** (preview, rollout questa settimana), con focus su modifica guidata dei semantic model in browser.
+
+**Cosa abilita**:
+- Analisi conversazionale della qualità del modello (naming, struttura, relazioni)
+- Modifiche schema assistite: rename table/column, creazione relazioni, generazione measure DAX
+- Sessioni con consenso esplicito + **restore checkpoint** automatico per rollback
+
+**Perché è una macro-area utile**:
+rafforza il "semantic model as control plane" anche fuori dal desktop, ed è il ponte operativo tra governance BI e authoring agentico quotidiano nel servizio.
+
 ---
 
 <a id="10"></a>
@@ -549,10 +617,17 @@ I Data Agents passano da "**chatbot SQL**" a **piattaforma agent-as-a-service** 
 - App (webhook, websocket)
 - Agenti (Operations Agent reagisce a eventi)
 
-**Novità a Build 2026**:
-- Più sorgenti supportate (Fabric items, Microsoft 365, external)
-- Più target di routing
-- Migliore filtering / shaping degli eventi
+**Novità a Build 2026 (dettaglio)**:
+
+| Capability | Stato | Cosa aggiunge |
+|---|---|---|
+| **Eventstream come publisher di Business Events** | Preview | Trasforma segnali low-level (es. CDC) in eventi business (es. `OrderCreated`) con filtering/enrichment/correlation |
+| **Activator come publisher di Business Events** | Preview | Condizioni rilevate su report, dashboard real-time, query KQL o Warehouse SQL possono emettere Business Events |
+| **Analisi Business Events in Eventhouse + Real-Time Dashboard** | Preview | Ogni evento pubblicato diventa queryable in KQL (tabella dedicata), senza pipeline aggiuntive |
+| **Modello di capacity per Business Events** | **GA** | Metering trasparente per operazioni evento e listener/orari, con visibilità nella Capacity Metrics app |
+
+### Perché conta
+Business Events passa da feature di integrazione a pattern operativo completo: **publish → persist/query → visualize → automate** con governance e costing espliciti.
 
 Sessione Build: **OD819** — *Real-Time Intelligence: Bringing event-driven AI apps & agents* — https://aka.ms/OD819
 
@@ -638,6 +713,25 @@ Sessione: **OD820** — *Designing reliable multi-agent apps with Azure Cosmos D
 
 [Blog dettaglio](https://community.fabric.microsoft.com/t5/Fabric-Updates-Blogs/Advancing-Databases-for-the-Next-Generation-of-Applications/ba-p/5172237)
 
+<a id="125"></a>
+### 12.5 Microsoft SQL: macro-area "Agentic Database Developer"
+
+Nel giro di verifica è emersa una macro-area non esplicitata abbastanza nel documento: le novità **Microsoft SQL @ Build 2026** che completano il lato "database developer workflow".
+
+| Blocco | Novità chiave | Stato |
+|---|---|---|
+| **VS Code + MSSQL extension** | Schema Designer NL→schema + output T-SQL/ORM; Data API builder integration per endpoint REST/GraphQL/MCP | **GA** |
+| **SQL Notebooks in VS Code** | Supporto `.ipynb` SQL con IntelliSense e mix SQL/Python | **GA** |
+| **Provisioning Azure SQL da VS Code** | Provisioning diretto in editor | Preview |
+| **SSMS goes Agentic** | GitHub Copilot Agent Mode per troubleshooting/refactor multi-step | Preview |
+| **Security by design** | Entra server-level logins + fixed server roles | **GA** |
+| **Crypto hardening** | TDE con AES key support | Preview |
+| **Event-driven SQL** | Change Event Streaming verso Event Hubs (CloudEvents) | Preview |
+| **Fabric Apps + SQL in Fabric** | App end-to-end sopra SQL database in Fabric senza infra separata | Preview |
+
+**Perché conta**:
+questa area chiude il gap tra "costruzione app agentiche" e "toolchain database enterprise"; è la controparte developer/DBA delle novità più data-platform già coperte in Fabric IQ, DW e Data Factory.
+
 ---
 
 <a id="13"></a>
@@ -666,11 +760,25 @@ Altri update collegati:
 
 **Posizionamento**: Data Factory è la **integration foundation** dello stack agentic. Senza dati freschi, puliti e contestualizzati, nessun agente è affidabile.
 
-**Pillar annunciati**:
-- **Movimento dati** più veloce su più sorgenti
-- **Grounding** delle pipeline AI su sorgenti trusted
-- **Shipping più rapido** di esperienze intelligenti end-to-end
-- Integrazione con OneLake mirroring, shortcuts, eventstream
+**Novità Build 2026 che vale la pena esplicitare**:
+
+| Pillar | Novità principali | Stato |
+|---|---|---|
+| **Mission-critical integration** | Dataflow Gen2 diagnostics con OPDG logs | Preview |
+| **Secure ingestion** | Copy Job / Copy Activity verso DW con topologie private (workspace private link + OAP + gateway) | **GA** |
+| **Unified estate** | Mirroring con Workspace Private Link per Azure SQL DB, SQL Server, SAP Datasphere, SharePoint List | Preview |
+| **Transformation** | Execute Query API (Power Query streaming) | **GA** |
+| **Transformation** | Mapping Data Flows in Dataflow Gen2 (settimana 8 giugno), Warehouse→Lakehouse perf improvements, My Queries | Preview |
+| **dbt in Fabric** | dbt pipeline activity, dbt API, export project | Preview |
+| **Orchestration** | Refresh SQL analytics endpoint activity | **GA** |
+| **Orchestration** | Approval activity, Materialized Lakeview refresh, conditional retries, improved canvas, connection/item refs, Airflow identity+variables, Airflow Copilot | Preview |
+| **Copy Job distribution** | CDC SQL family, full/incremental switch, JSON edits, Activator trigger, truncate-before-full, nuove destinazioni (GBQ/MySQL/PostgreSQL) | **GA** |
+| **Copy Job advanced** | SCD Type 2 esteso, auto-partitioning (Oracle/SAP HANA/Lakehouse), SAP ABAP add-on | Preview |
+| **Agentic DI** | Data Factory Skills (authoring/consumption/diagnostics) + Airflow support nel MCP di Data Factory | Preview |
+| **ADF→Fabric migration** | Tooling di migrazione MDF e accesso dal migrate pane | Preview |
+
+### Perché conta
+Con queste release, Data Factory non è solo "ETL in Fabric": diventa un layer **pro-code + low-code + agent-ready**, con percorso esplicito di migrazione da Azure Data Factory.
 
 ---
 
@@ -722,4 +830,4 @@ Altri update collegati:
 
 ---
 
-*Documento aggiornato al 3 giugno 2026, basato su tutti i blog ufficiali Microsoft pubblicati il 2-3 giugno 2026 per il Build 2026.*
+*Documento aggiornato al 4 giugno 2026, basato su blog ufficiali Microsoft pubblicati il 2-4 giugno 2026 per il Build 2026 (incluso il dettaglio post-day-1 su Power BI, Fabric IQ, Business Events e Data Factory).*
