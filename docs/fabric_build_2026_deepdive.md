@@ -1,6 +1,6 @@
 # 📚 Microsoft Fabric @ Build 2026 — Deep Dive di ogni annuncio
 
-> Documento di approfondimento in italiano: per **ogni singolo punto** dell'[overview](fabric_build_2026_overview.md), trovi qui **cos'è, come funziona, perché conta, scenari d'uso, link, sessioni**. Compagno tecnico al file overview.
+> Documento di approfondimento in italiano: per **ogni singolo punto dell'overview Build 2026**, trovi qui **cos'è, come funziona, perché conta, scenari d'uso, link, sessioni**. Versione autosufficiente, senza dipendenze da altri documenti.
 
 📰 Fonti primarie:
 - Hero blog Arun Ulag — https://azure.microsoft.com/en-us/blog/microsoft-build-2026-building-agentic-apps-with-microsoft-fabric-and-microsoft-databases/
@@ -114,8 +114,6 @@ Tutto sotto il cappello **Microsoft IQ**.
 <a id="2"></a>
 ## 2. 🐟 **Rayfin** — From prompt to production backend
 
-> Documento dedicato: [rayfin.md](rayfin.md). Qui il **riassunto deep-dive** dei punti chiave.
-
 ### Cos'è
 **Rayfin** è un **SDK + CLI open-source** (MIT, GitHub: [microsoft/rayfin](https://github.com/microsoft/rayfin)) che fa una cosa precisa: permette a developer e ad agenti di coding di **descrivere a parole o in codice** cosa deve fare il backend di un'applicazione, e ottenere automaticamente:
 - **Database** con schema, vincoli, migrazioni
@@ -141,7 +139,12 @@ Tutto sotto il cappello **Microsoft IQ**.
 ### Scenari d'uso
 - App di **planning** che scrive su Fabric e legge dal semantic model
 - App **operational** (inventory, ticketing) sopra OneLake con governance Fabric
-- Backend per **Fabric Apps** (vedi documento dedicato `fabric_apps.md`)
+- Backend per **Fabric Apps** con deploy su artifact Fabric, auth integrata e policy ereditate
+
+### Dettagli operativi utili (integrati qui)
+- **Auth e sicurezza**: supporto a Fabric SSO + gestione policy lato backend
+- **Deployment model**: pipeline code-first (`init/dev/deploy/migrate`) con promozione ambiente controllata
+- **Integrazione analytics**: dati app scritti in OneLake e subito disponibili a Power BI, notebook e data agents
 
 ### Partnership annunciata
 **Replit** — i loro coding agent producono app Rayfin che escono direttamente in Fabric:
@@ -154,8 +157,6 @@ Tutto sotto il cappello **Microsoft IQ**.
 
 <a id="3"></a>
 ## 3. 🌐 **Web IQ** — Grounding APIs per agenti
-
-> Documento dedicato: [web_iq.md](web_iq.md).
 
 ### Cos'è
 Suite di **API di grounding AI-native** (web, news, immagini, video) annunciata al Build 2026. È il **pilastro "web"** di Microsoft IQ. Sostituisce/affianca le API tradizionali di Bing search, ma è progettata **per agenti, non per browser**.
@@ -523,6 +524,12 @@ Sessione Build: **OD818** — *The AI-native data engineer*
 
 **Perché conta**: il confine tra "report Power BI" e "app web custom" si dissolve. Stessa fonte di verità, esperienza utente su misura.
 
+**Componenti tecniche da tenere a mente**:
+- **Data model binding** al semantic model (misure, gerarchie, security context)
+- **Auth propagation**: l'app eredita il perimetro identity/governance di Fabric
+- **App generation workflow**: prompt/spec → scaffolding app → refine UI/business logic → deploy
+- **Use case target**: flussi operativi con write/read guidati da metriche governate
+
 <a id="94"></a>
 ### 9.4 Open-source Agent Skills for Fabric
 
@@ -818,15 +825,12 @@ Con queste release, Data Factory non è solo "ETL in Fabric": diventa un layer *
 
 ---
 
-## 🧭 Come orientarsi tra i 4 documenti di questa cartella
+## 🧭 Nota di utilizzo
 
-| File | Scope |
-|---|---|
-| [rayfin.md](rayfin.md) | Tutto su Rayfin (SDK, CLI, decorator, template, GitHub) |
-| [fabric_apps.md](fabric_apps.md) | Tutto su Fabric Apps (Preview): quickstart, CLI, deploy, use case |
-| [web_iq.md](web_iq.md) | Tutto su Web IQ (API grounding, Harrier, evidence, GDSAT, MCP) |
-| [fabric_build_2026_overview.md](fabric_build_2026_overview.md) | Indice riassuntivo di **tutte le novità Fabric** a Build 2026 |
-| **[fabric_build_2026_deepdive.md](fabric_build_2026_deepdive.md) ← QUESTO** | Approfondimento punto-per-punto dell'overview |
+Questo deep-dive è stato consolidato per essere **self-contained**:
+- include i dettagli principali di Rayfin, Fabric Apps e Web IQ
+- copre sia annunci Day 1 sia update post-Day 1
+- può essere usato come documento unico per briefing, demo e Q&A
 
 ---
 
